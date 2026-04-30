@@ -1,0 +1,6 @@
+interface:
+  display_name: Vowline
+  short_description: Outcome-first operating covenant for AI agents.
+  default_prompt: "$vowline"
+policy:
+  allow_implicit_invocation: true
