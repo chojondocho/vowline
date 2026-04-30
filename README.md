@@ -8,69 +8,66 @@
   <img src="assets/vowline-banner.png" alt="Vowline brand banner: one luminous line moving through aligned agent nodes" width="100%">
 </p>
 
-**A compact operating covenant for AI agents.**
+**Outcome-first operating instructions for AI agents.**
 
-Vowline gives Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other `SKILL.md`-compatible agents a shared way to handle meaningful work: understand the real outcome, avoid unnecessary clarification loops, preserve intent, control side effects, verify when practical, and report the result first.
+Vowline is a portable `SKILL.md` package for Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other skill-compatible agent harnesses. It gives agents a shared working contract for meaningful tasks: understand the real outcome, act with a small safe scope, preserve user intent, ask only when a question matters, verify when practical, and report the result plainly.
 
-It is not only for coding. Use it for research, writing, planning, review, design critique, document work, handoffs, repository work, and any request where an agent needs judgment rather than a one-line answer.
+Use it when the agent needs judgment rather than a one-line answer: coding, debugging, research, writing, planning, review, design critique, document work, repository work, and handoffs.
 
-## Install With Your Agent
+## Quick start
 
-Most users do not need to clone this repository by hand. Open the agent you want to equip and paste:
+The easiest path is to ask the target agent to install Vowline for itself:
 
 ```text
 Install Vowline for yourself by following https://github.com/chojondocho/vowline/blob/main/INSTALL.md. Verify installation.
 ```
 
-Vowline is agent-readable on purpose. The install guide explains how to copy the canonical skill and the host-specific bridge files directly. The Python helpers are optional for people who want a repeatable local command.
+For a project-local install, ask from inside the project:
 
-## Why Vowline
+```text
+Install Vowline into this project by following https://github.com/chojondocho/vowline/blob/main/INSTALL.md. Use project-local paths. Verify installation.
+```
 
-Many agent failures are not failures of intelligence. They are failures of operating discipline:
+You do not need to clone this repository if your agent can read GitHub and write the relevant local files. Vowline is designed to be installed by agents as well as by humans.
 
-- answering the visible wording while missing the user's real goal;
-- asking avoidable questions instead of making a safe, useful assumption;
-- over-searching, over-planning, or over-editing because the stopping rule is vague;
-- changing adjacent facts, tone, code, structure, or intent that should have been preserved;
-- taking externally visible or irreversible actions without explicit approval;
-- reporting effort instead of a result the user can trust.
+## What it changes
 
-Vowline compresses the countermeasure into one reusable covenant.
+Many bad agent answers do not fail because the model lacks raw capability. They fail because the work loop is vague.
+
+| Common failure | Vowline's instruction |
+| --- | --- |
+| Answers the literal wording but misses the user's real goal | Frame the actual outcome before acting |
+| Asks avoidable clarification questions | Proceed with safe assumptions unless the missing fact materially changes the result or creates risk |
+| Makes broad edits when a small fix is enough | Inspect first, then make the smallest sufficient change |
+| Rewrites tone, behavior, facts, or structure accidentally | Preserve intent, behavior, public interfaces, style, structure, and known facts unless the request requires otherwise |
+| Uses tools, searches, or plans past the point of usefulness | Use the smallest sufficient evidence and tool loop |
+| Takes externally visible or irreversible action too early | Prepare the work, then ask for explicit approval before acting |
+| Reports effort instead of a usable result | Lead with the result, validation, assumptions, and remaining blockers |
+
+The compact covenant is:
 
 ```text
 Frame -> Preamble -> Effort -> Retrieve -> Act -> Authorize -> Verify -> Report -> Stop
 ```
 
-In practical terms:
+In practice:
 
 ```text
 Find the real outcome.
-Proceed unless a missing fact materially changes the result or creates risk.
+Proceed unless a missing fact changes the result or creates risk.
 Use the smallest sufficient tool and evidence loop.
-Preserve intent, behavior, style, structure, and facts.
+Preserve intent, behavior, structure, style, and facts.
 Ask before irreversible or externally visible actions.
 Validate the affected path when practical.
 Answer with the result first.
 Stop when more work would not materially improve correctness.
 ```
 
-## Where It Helps
+## Supported agents
 
-| Work type | What Vowline pushes the agent to do |
-| --- | --- |
-| Code and repositories | Inspect first, keep changes scoped, preserve behavior, run relevant checks |
-| Research | Use authoritative sources, separate evidence from inference, cite important claims |
-| Writing and editing | Preserve purpose, audience, tone, and known facts while removing weakness |
-| Planning and decisions | State the recommendation, tradeoffs, validation path, and real blockers |
-| Review and critique | Surface material risks first instead of nitpicks or reassurance |
-| Design and visual work | Respect context, states, accessibility, responsiveness, and actual workflows |
-| Handoffs | Leave exact state, evidence, risks, and the next useful action |
+Vowline keeps the canonical behavior in `skills/vowline/SKILL.md` and installs thin bridge files for hosts that read rules, memories, or instruction files.
 
-## What Gets Installed
-
-Vowline keeps the canonical behavior in `skills/vowline/SKILL.md` and uses small bridge files for hosts that read standing rules or instruction files.
-
-| Harness | Project install |
+| Agent / harness | Project install writes |
 | --- | --- |
 | Codex / AGENTS-aware tools | `.agents/skills/vowline/SKILL.md`, `AGENTS.md` |
 | Claude Code | `.claude/skills/vowline/SKILL.md`, `CLAUDE.md` |
@@ -80,82 +77,126 @@ Vowline keeps the canonical behavior in `skills/vowline/SKILL.md` and uses small
 | GitHub Copilot | `.github/skills/vowline/SKILL.md`, `.github/copilot-instructions.md` |
 | Community `SKILL.md` targets | OpenCode, Amp, Goose, Cline, Roo Code, Aider, OpenClaw, Trae skill folders |
 
-For Codex, the documented user skill path is `~/.agents/skills/vowline/SKILL.md`. The installer also mirrors the skill into `${CODEX_HOME:-~/.codex}/skills/vowline/SKILL.md` for compatibility with current Codex installer/Desktop environments that use `CODEX_HOME/skills`. The mirror is useful, but it is not the official required Codex skill path.
+Codex uses `~/.agents/skills/vowline/SKILL.md` as the documented user-level skill path. The installer also mirrors the skill into `${CODEX_HOME:-~/.codex}/skills/vowline/SKILL.md` for compatibility with Codex environments that use `CODEX_HOME/skills`. Treat that mirror as compatibility support, not as the primary Codex path.
 
-See [INSTALL.md](INSTALL.md), [UNINSTALL.md](UNINSTALL.md), and [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) for exact paths.
+See [INSTALL.md](INSTALL.md), [UNINSTALL.md](UNINSTALL.md), and [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) for exact global and project paths.
 
-## Optional Scripted Install
+## Scripted install
 
-The scripts are optional helpers, not a requirement. They are stdlib-only and idempotent.
+The scripts are optional. They use only the Python standard library and are safe to run repeatedly.
 
-Project scope:
-
-```bash
-python3 install.py project /path/to/project
-python3 install.py verify /path/to/project
-```
-
-User/global scope:
+Clone the repository first:
 
 ```bash
-python3 install.py global
-python3 install.py verify-global
+git clone https://github.com/chojondocho/vowline.git
+cd vowline
 ```
 
-Install a smaller set of harnesses:
+Install into the current user's agent locations:
+
+```bash
+python3 install.py global --harnesses core
+python3 install.py verify-global --harnesses core
+```
+
+Install into one project:
+
+```bash
+python3 install.py project /path/to/project --harnesses core
+python3 install.py verify /path/to/project --harnesses core
+```
+
+Install only selected harnesses:
 
 ```bash
 python3 install.py project /path/to/project --harnesses codex,claude,windsurf
-python3 install.py global --harnesses core
+python3 install.py global --harnesses codex
 ```
 
-`core` means Codex, Claude Code, Windsurf, Cursor, Gemini CLI, and GitHub Copilot. `all` also writes community `SKILL.md` copies for OpenCode, Amp, Goose, Cline, Roo Code, Aider, OpenClaw, and Trae.
+Harness groups:
 
-## Use
+| Group | Includes |
+| --- | --- |
+| `core` | Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot |
+| `community` | OpenCode, Amp, Goose, Cline, Roo Code, Aider, OpenClaw, Trae |
+| `all` | `core` plus `community` |
 
-Direct invocation works when you want to force the skill:
+The script default is `all`. Pass `--harnesses core` when you want only the mainstream host targets.
+
+## How to use it
+
+After installation, direct invocation is usually optional because the host bridge files carry the fallback contract. Direct invocation is still useful when you want to force the skill for one request:
 
 ```text
 $vowline review this launch plan for weak assumptions
 /vowline rewrite this memo without losing the author's intent
-@vowline compare these options and recommend one
-$vowline debug this failing test without broad refactors
+@vowline compare these implementation options and recommend one
+$vowline debug this failing test with the smallest safe change
 ```
 
-After installation, direct invocation is usually optional for substantive work because the host-specific bridge files carry a compact fallback contract.
+Codex commonly uses `$vowline`, Claude Code commonly uses `/vowline`, and Windsurf commonly uses `@vowline`. Other hosts may surface skills or rules differently.
 
-## Design Boundaries
+## Repository layout
 
-Vowline does not override system messages, safety policies, repository rules, organization settings, or tool permissions. It does not force automatic invocation in every host.
+```text
+skills/vowline/SKILL.md      Canonical Vowline contract
+guidance/                    Host-specific bridge text
+install.py                   Optional installer and verifier
+uninstall.py                 Optional uninstaller and verifier
+docs/COMPATIBILITY.md        Supported paths and host notes
+tests/                       Installer, verifier, and uninstall coverage
+```
 
-It also does not grant an agent permission to deploy, publish, message people, mutate production data, delete user data, purchase anything, rotate credentials, or take other externally visible actions. It tells the agent to prepare the work and ask for explicit approval first.
+When Vowline edits an existing instruction file, it uses a marked block and preserves unrelated content:
 
-## Repository Checks
+```text
+<!-- vowline:start -->
+...
+<!-- vowline:end -->
+```
 
-Run:
+Repeated installs replace only that marked block.
+
+## Boundaries
+
+Vowline does not override system messages, platform policies, safety rules, repository instructions, organization settings, or tool permissions. It also does not make every host invoke the skill automatically.
+
+Vowline does not grant permission to deploy, publish, purchase, message people, mutate production data, delete user data, rotate credentials, or take other externally visible or irreversible actions. It tells the agent to prepare the work and ask for explicit approval first.
+
+## Development checks
+
+Run the same basic checks used by the repository:
 
 ```bash
 python3 -m py_compile install.py uninstall.py
 python3 -m unittest discover -s tests
 ```
 
-The tests cover project install, global install, harness selection, idempotent marked-block replacement, legacy cleanup, verification, and uninstall.
+The tests cover project installs, global installs, harness selection, idempotent marked-block replacement, legacy cleanup, verification, and uninstall behavior.
 
 ## Uninstall
 
-To ask your agent to remove Vowline, paste:
+Ask the agent to remove Vowline:
 
 ```text
 Uninstall Vowline from yourself by following https://github.com/chojondocho/vowline/blob/main/UNINSTALL.md. Verify removal.
 ```
 
-Optional scripted removal:
+Or use the optional script:
 
 ```bash
-python3 uninstall.py project /path/to/project
-python3 uninstall.py global
-python3 uninstall.py verify-global
+python3 uninstall.py global --harnesses core
+python3 uninstall.py verify-global --harnesses core
 ```
+
+For project-local removal:
+
+```bash
+python3 uninstall.py project /path/to/project --harnesses core
+python3 uninstall.py verify /path/to/project --harnesses core
+```
+
+Uninstall removes Vowline-owned skill directories and Vowline marked blocks. It should not remove unrelated user or project instructions.
 
 ## Name
 
