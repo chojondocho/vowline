@@ -223,7 +223,7 @@ ${CODEX_HOME:-~/.codex}/skills/vowline/SKILL.md exists when that Codex environme
 
 Existing installs are updated by repeating the relevant install steps from the latest repository. The installer replaces Vowline-owned skill directories and marked Vowline bridge blocks while preserving unrelated instructions.
 
-See [UPDATE.md](UPDATE.md) for user-facing update prompts, harness-scope guidance, and verification checks.
+See [UPDATE.md](UPDATE.md) for the repeat-install update procedure, scope guidance, verification checks, and reporting expectations. This file remains the source of truth for exact paths and bridge placement.
 
 ## Uninstall
 

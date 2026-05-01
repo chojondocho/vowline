@@ -95,7 +95,7 @@ Vowline keeps the canonical behavior in `skills/vowline/SKILL.md` and installs h
 
 Codex uses `~/.agents/skills/vowline/SKILL.md` as the documented user-level skill path. The installer also mirrors the skill into `${CODEX_HOME:-~/.codex}/skills/vowline/SKILL.md` for compatibility with Codex environments that use `CODEX_HOME/skills`. Treat that mirror as compatibility support, not as the primary Codex path.
 
-See [INSTALL.md](INSTALL.md), [UPDATE.md](UPDATE.md), [UNINSTALL.md](UNINSTALL.md), and [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) for exact global and project paths.
+See [INSTALL.md](INSTALL.md) and [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) for exact global and project paths. See [UPDATE.md](UPDATE.md) and [UNINSTALL.md](UNINSTALL.md) for update and removal flows.
 
 ## Scripted install and update
 
