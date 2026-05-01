@@ -1,6 +1,6 @@
 # Compatibility
 
-Vowline keeps one canonical skill at `skills/vowline/SKILL.md` and adds thin adapters for agent harnesses that read rules, memories, or instruction files. The goal is portability without turning the covenant into a host-specific prompt stack.
+Vowline keeps one canonical skill at `skills/vowline/SKILL.md` and adds host adapters for agent harnesses that read rules, memories, or instruction files. The goal is portability without turning the covenant into a host-specific prompt stack.
 
 ## Reference Pattern
 
@@ -163,10 +163,10 @@ Global equivalents are installed where community tools commonly look. These copi
 
 ## Why Two Layers
 
-Native skill hosts use progressive disclosure: they see the skill name and description first, then load the full `SKILL.md` when relevant. Rule/context hosts load short instruction files more eagerly. Vowline uses both layers:
+Native skill hosts use progressive disclosure: they see the skill name and description first, then load the full `SKILL.md` when relevant. Rule/context hosts load instruction files more eagerly. Vowline uses both layers:
 
 - `SKILL.md` carries the canonical covenant.
-- Bridge files carry only the compact fallback contract.
+- Bridge files carry host-facing activation and routing guidance that points agents to the full `SKILL.md`; they are not replacements for the canonical skill body.
 - Marked blocks make repeated installs and uninstalls predictable.
 
 ## Boundaries

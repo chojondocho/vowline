@@ -1,6 +1,6 @@
 interface:
-  display_name: Vowline
-  short_description: Outcome-first operating covenant for AI agents.
+  display_name: "Vowline"
+  short_description: "Outcome-first, evidence-aware operating layer for substantive work across skills, tools, and subagents."
   default_prompt: "$vowline"
 policy:
   allow_implicit_invocation: true

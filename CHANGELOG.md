@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Reworked the canonical `vowline` skill into a broader cross-cutting operating skill for substantive agent work across tools, skills, and subagents.
+- Replaced compact host bridge guidance with the current Vowline activation block.
+- Added `UPDATE.md` to document updating existing installs by rerunning the idempotent install flow from the latest repository.
+- Added README and repository-agent guidance for update requests and verification.
+
 ## 0.1.0 - Initial release
 
 - Added the canonical `vowline` skill.

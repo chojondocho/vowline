@@ -4,7 +4,7 @@ Vowline is intentionally small. Contributions should improve clarity, compatibil
 
 ## Principles
 
-- Keep `skills/vowline/SKILL.md` compact and outcome-first.
+- Keep `skills/vowline/SKILL.md` concise, general, and outcome-first.
 - Prefer decision rules over long procedures.
 - Do not add tool-specific behavior unless it improves a documented harness adapter or is isolated in compatibility documentation.
 - Preserve the side-effect boundary: no deploy, publish, purchase, messaging, production mutation, deletion, or credential rotation without explicit user approval.
