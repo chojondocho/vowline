@@ -1,7 +1,7 @@
 # Vowline
 
 [![check](https://github.com/chojondocho/vowline/actions/workflows/check.yml/badge.svg)](https://github.com/chojondocho/vowline/actions/workflows/check.yml)
-[![release](https://img.shields.io/github/v/release/chojondocho/vowline)](https://github.com/chojondocho/vowline/releases)
+[![release](https://img.shields.io/github/v/release/chojondocho/vowline?label=release&cacheSeconds=300)](https://github.com/chojondocho/vowline/releases)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 <p align="center">
