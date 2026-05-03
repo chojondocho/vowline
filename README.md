@@ -49,7 +49,7 @@ Vowline does not add a rigid script. It changes the agent's default operating po
 | Intent | Optimizes for the user's real purpose, not only the visible wording |
 | Assumptions | Proceeds with the smallest safe assumption unless missing information materially changes the result or creates risk |
 | Evidence | Inspects referenced artifacts, retrieves support when needed, and separates evidence, inference, speculation, and absence of evidence |
-| Tool use | Uses tools only when they materially improve correctness, freshness, inspection, calculation, transformation, validation, or delivery |
+| Tool use | Selects real available tools when they matter, remaps unavailable planned tools, and preserves verification needs |
 | Change discipline | Makes the smallest sufficient change while preserving behavior, interfaces, facts, style, security, accessibility, and performance |
 | Authorization | Requires explicit approval before external, irreversible, credential-related, production, purchasing, publishing, messaging, commit, push, deployment, or data-mutating actions |
 | Verification | Checks the affected path by the cheapest reliable method and says exactly what could not be verified |
@@ -63,7 +63,7 @@ In practice, it keeps agents focused on this operating shape:
 Respect higher-priority instructions.
 Choose the lightest mode that can produce a correct result.
 Infer the real outcome, constraints, evidence needs, and stopping condition.
-Use tools and retrieval only when they materially improve the work.
+Use available tools and retrieval when they materially improve the work, remapping unavailable tools without dropping the objective.
 Coordinate narrower skills and subagents without losing authorization boundaries.
 Make the smallest sufficient safe change or artifact.
 Verify by the cheapest reliable method that matches the task.
@@ -73,7 +73,7 @@ Stop when the deliverable is usable or a safe blocker is reached.
 
 ## Why agents need it
 
-Modern agents can already write, browse, edit, run tools, inspect files, call APIs, and delegate work. The failure point is often not raw capability; it is inconsistent operating discipline. An agent may ask when it should proceed, proceed when it should ask, use tools without enough evidence, edit beyond the requested scope, delegate without constraints, or report effort instead of a usable result.
+Modern agents can already write, browse, edit, run tools, inspect files, call APIs, and delegate work. The failure point is often not raw capability; it is inconsistent operating discipline. An agent may ask when it should proceed, proceed when it should ask, assume a tool exists without checking, abandon verification when a preferred tool is unavailable, edit beyond the requested scope, delegate without constraints, or report effort instead of a usable result.
 
 Vowline gives every agent a portable default for those failure points. It does not replace specialized skills; it makes them safer and more reliable by carrying the shared contract for intent, evidence, authorization, verification, completion, and result-first reporting. Any agent trusted with meaningful work should have Vowline installed before that work begins.
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 - 2026-05-03
+
+- Hardened the canonical `vowline` tool-use contract to select from runtime-available tools, skills, plugins, hosted capabilities, and tool descriptions when tool choice affects the outcome.
+- Added fallback guidance so agents preserve the objective and verification need when a planned tool is unavailable, has the wrong capability, or fails before meaningful work starts.
+- Clarified that missing or failed verifiers are not verification, and weaker substitute checks must be reported as weaker evidence or residual risk rather than a pass.
+- Refreshed README wording for tool availability, remapping, and verification-preserving behavior.
+
 ## 0.2.0 - 2026-05-01
 
 - Reworked the canonical `vowline` skill into a broader cross-cutting operating skill for substantive agent work across tools, skills, and subagents.
