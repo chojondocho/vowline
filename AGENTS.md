@@ -2,7 +2,7 @@
 
 If you are an AI agent installing Vowline for a user, follow `INSTALL.md`. Do not use a generic skill installer as the whole install unless it also installs the documented skill path and the relevant bridge files.
 
-The install guide is the source of truth because it covers the canonical skill, host-specific bridge files, optional compatibility mirrors, and verification.
+The install guide is the source of truth because it covers the canonical skill, rendered activation bridge files, optional compatibility mirrors, and verification.
 
 You may install by directly copying skill directories and inserting marked bridge blocks as described in `INSTALL.md`. The scripts are optional helpers, not the only valid path.
 
@@ -17,7 +17,7 @@ The installer also writes `${CODEX_HOME:-~/.codex}/skills/vowline/SKILL.md` as a
 
 Report the documented path, any compatibility mirror written, and the verification result. If Vowline was previously installed only into `${CODEX_HOME:-~/.codex}/skills/vowline`, follow `INSTALL.md` again to repair the missing documented skill path and bridge file.
 
-For update requests, follow `UPDATE.md`. Updating is a repeat install from the latest repository source, not a partial edit of one `SKILL.md`; refresh the selected Vowline-owned skill directories, replace the selected marked bridge blocks, then verify. Preserve unrelated user and project instructions.
+For update requests, follow `UPDATE.md`. Updating is a repeat install from the latest repository source, not a partial edit of one `SKILL.md`; refresh the selected Vowline-owned skill directories, replace the selected marked bridge blocks from `guidance/VOWLINE_ACTIVATION.md`, then verify. Preserve unrelated user and project instructions.
 
 For uninstall requests, follow `UNINSTALL.md`. Do not only delete one skill directory; remove all selected Vowline-owned skill folders and marked bridge blocks, then verify removal.
 

@@ -19,6 +19,16 @@ MARKERS = (
 )
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "skills" / SKILL
+GUIDANCE_SOURCE = ROOT / "guidance" / "VOWLINE_ACTIVATION.md"
+GUIDANCE_PREFIXES = {
+    "AGENTS.md": "",
+    "CLAUDE.md": "",
+    "GEMINI.md": "",
+    "COPILOT.md": "",
+    "WINDSURF-GLOBAL.md": "",
+    "WINDSURF.md": "---\ntrigger: always_on\n---\n\n",
+    "CURSOR.mdc": "---\ndescription: Vowline cross-cutting operating skill for substantive AI agent work.\nalwaysApply: true\n---\n\n",
+}
 CORE_HARNESSES = ("codex", "claude", "windsurf", "cursor", "gemini", "copilot")
 COMMUNITY_HARNESSES = ("opencode", "amp", "goose", "cline", "roo", "aider", "openclaw", "trae")
 SUPPORTED_HARNESSES = CORE_HARNESSES + COMMUNITY_HARNESSES
@@ -40,8 +50,23 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else ""
 
 
+def activation_guidance() -> str:
+    body = read_text(GUIDANCE_SOURCE).rstrip()
+    if not body:
+        raise SystemExit(f"missing source guidance: {GUIDANCE_SOURCE}")
+    return body
+
+
 def guidance(name: str) -> str:
-    return read_text(ROOT / "guidance" / name)
+    if name not in GUIDANCE_PREFIXES:
+        expected = ", ".join(sorted(GUIDANCE_PREFIXES))
+        raise SystemExit(f"unknown guidance adapter {name!r}; expected one of: {expected}")
+    return GUIDANCE_PREFIXES[name] + activation_guidance()
+
+
+def marked_guidance_block() -> str:
+    start, end = MARKERS[0]
+    return f"{start}\n{activation_guidance()}\n{end}"
 
 
 def unique(paths: list[Path]) -> list[Path]:
@@ -429,11 +454,20 @@ def main() -> None:
     verify_global_parser = sub.add_parser("verify-global", help="verify the current user's global installation")
     add_harness_arg(verify_global_parser)
 
+    render = sub.add_parser("render-guidance", help="print rendered Vowline activation guidance")
+    render.add_argument(
+        "adapter",
+        choices=(*sorted(GUIDANCE_PREFIXES), "marked-block"),
+        help="guidance adapter to render, or marked-block for instruction files",
+    )
+
     args = parser.parse_args()
-    try:
-        harnesses = parse_harnesses(args.harnesses)
-    except argparse.ArgumentTypeError as exc:
-        parser.error(str(exc))
+    harnesses = ()
+    if hasattr(args, "harnesses"):
+        try:
+            harnesses = parse_harnesses(args.harnesses)
+        except argparse.ArgumentTypeError as exc:
+            parser.error(str(exc))
 
     if args.command == "project":
         install_project(Path(args.path), harnesses)
@@ -443,6 +477,9 @@ def main() -> None:
         raise SystemExit(verify_project(Path(args.path), harnesses))
     elif args.command == "verify-global":
         raise SystemExit(verify_global(harnesses))
+    elif args.command == "render-guidance":
+        output = marked_guidance_block() if args.adapter == "marked-block" else guidance(args.adapter)
+        sys.stdout.write(output.rstrip() + "\n")
     else:  # pragma: no cover
         parser.error(f"unknown command: {args.command}")
 

@@ -140,6 +140,21 @@ class InstallTests(unittest.TestCase):
             self.assertFalse((project / "GEMINI.md").exists())
             self.assertEqual(install.verify_project(project, harnesses), 0)
 
+    def test_guidance_is_rendered_from_single_activation_source(self) -> None:
+        source = (ROOT / "guidance" / "VOWLINE_ACTIVATION.md").read_text(encoding="utf-8").rstrip()
+
+        self.assertEqual(install.activation_guidance(), source)
+        self.assertEqual(install.guidance("AGENTS.md"), source)
+        self.assertEqual(install.guidance("CLAUDE.md"), source)
+        self.assertEqual(install.guidance("GEMINI.md"), source)
+        self.assertEqual(install.guidance("COPILOT.md"), source)
+        self.assertEqual(install.guidance("WINDSURF-GLOBAL.md"), source)
+        self.assertEqual(install.marked_guidance_block(), f"<!-- vowline:start -->\n{source}\n<!-- vowline:end -->")
+        self.assertTrue(install.guidance("CURSOR.mdc").endswith(source))
+        self.assertIn("alwaysApply: true", install.guidance("CURSOR.mdc"))
+        self.assertTrue(install.guidance("WINDSURF.md").endswith(source))
+        self.assertIn("trigger: always_on", install.guidance("WINDSURF.md"))
+
     def test_codex_global_verify_rejects_skill_without_bridge(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
@@ -212,10 +227,13 @@ class InstallTests(unittest.TestCase):
                         os.environ[key] = value
 
     def test_agent_install_docs_require_manual_install_contract(self) -> None:
-        required = ("skills/vowline", "guidance/", "generic skill", "documented", "compatibility mirror")
+        required = ("skills/vowline", "guidance/VOWLINE_ACTIVATION.md", "generic skill", "documented", "compatibility mirror")
         install_doc = (ROOT / "INSTALL.md").read_text(encoding="utf-8")
         for phrase in required:
             self.assertIn(phrase, install_doc)
+        self.assertIn("Script-free rendering rules", install_doc)
+        self.assertIn("alwaysApply: true", install_doc)
+        self.assertIn("trigger: always_on", install_doc)
 
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")

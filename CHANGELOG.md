@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 - 2026-05-03
+
+- Consolidated host-specific bridge guidance into a single canonical activation source at `guidance/VOWLINE_ACTIVATION.md`; removed the seven legacy per-host guidance files.
+- Made `install.py` render every host bridge file from that single source, prepending the front matter required by Cursor (`alwaysApply: true`) and Windsurf (`trigger: always_on`).
+- Added `python3 install.py render-guidance {marked-block|AGENTS.md|CLAUDE.md|GEMINI.md|COPILOT.md|WINDSURF-GLOBAL.md|WINDSURF.md|CURSOR.mdc}` so manual installers can emit the exact rendered text without running the install flow.
+- Refreshed the canonical `vowline` skill body with broader operating-mode, evidence, retrieval-budget, tool-use, change-discipline, verification, output-contract, completion, and task-overlay sections.
+- Refreshed README, INSTALL, UPDATE, UNINSTALL, and AGENTS guidance to point at the single activation source and the rendering rules.
+- Extended the test suite to assert that every host bridge is rendered from `guidance/VOWLINE_ACTIVATION.md` and that install docs document the script-free rendering rules.
+
 ## 0.3.0 - 2026-05-03
 
 - Hardened the canonical `vowline` tool-use contract to select from runtime-available tools, skills, plugins, hosted capabilities, and tool descriptions when tool choice affects the outcome.

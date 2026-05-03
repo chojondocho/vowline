@@ -6,17 +6,18 @@ Updating Vowline is a repeat install with replacement semantics:
 
 ```text
 skills/vowline/  -> canonical skill directory source
-guidance/        -> current bridge and generated-rule text
+guidance/VOWLINE_ACTIVATION.md -> current activation bridge body
+install.py       -> host-specific bridge rendering and verification
 INSTALL.md       -> exact paths, harness groups, and install expectations
 ```
 
-Do not duplicate the `INSTALL.md` path matrix or the full Vowline bridge block here. When paths, harnesses, or bridge wording change, update the source files above instead of maintaining parallel copies in this guide.
+Do not duplicate the `INSTALL.md` path matrix or the full Vowline bridge block here. When paths, harnesses, or host wrappers change, update the source files above instead of maintaining parallel copies in this guide. When only bridge wording changes, edit `guidance/VOWLINE_ACTIVATION.md`.
 
 You do not need to run a script when you can edit the filesystem directly. The scripts are optional helpers that perform the same skill-directory replacement, bridge-block replacement, generated-rule rewrite, and verification steps.
 
 ## Agent Update Contract
 
-If you are an AI agent asked to update Vowline, inspect `INSTALL.md`, `skills/vowline/`, and `guidance/` before changing files.
+If you are an AI agent asked to update Vowline, inspect `INSTALL.md`, `skills/vowline/`, `guidance/VOWLINE_ACTIVATION.md`, and the selected install targets before changing files.
 
 Do not update only one installed `SKILL.md`. A correct update refreshes each selected Vowline-owned skill directory and each selected host bridge file or generated rule file.
 
@@ -24,12 +25,12 @@ For each selected harness and target from `INSTALL.md`:
 
 ```text
 replace the installed Vowline skill directory with latest skills/vowline
-replace selected marked Vowline blocks using the current guidance file
-rewrite selected generated Vowline rule files from guidance/
+replace selected marked Vowline blocks using the current rendered activation body
+rewrite selected generated Vowline rule files rendered from guidance/VOWLINE_ACTIVATION.md
 verify the selected targets
 ```
 
-Preserve unrelated content before and after marked blocks. If a selected bridge file does not contain a Vowline block, append the current block from the relevant `guidance/` file. If it contains an older compact Vowline block, replace only that marked block.
+Preserve unrelated content before and after marked blocks. If a selected bridge file does not contain a Vowline block, append the current rendered activation block. If it contains an older compact Vowline block, replace only that marked block.
 
 ## Choose Scope
 
@@ -52,8 +53,8 @@ For user-level requests such as "update Vowline for yourself", update the select
 1. Start from the latest repository source, for example a fresh clone, a pulled checkout, or a source tree explicitly selected by the user.
 2. Open `INSTALL.md` and locate the selected global or project install section.
 3. Repeat the relevant install steps, treating `copy` as `replace` for existing Vowline-owned skill directories.
-4. Replace only marked Vowline blocks in existing instruction files.
-5. Rewrite selected generated Vowline rule files where the host uses generated rules.
+4. Replace only marked Vowline blocks in existing instruction files using the script-free rendering rules from `INSTALL.md`.
+5. Rewrite selected generated Vowline rule files where the host uses generated rules, again using the rendering rules from `INSTALL.md`.
 6. Verify the selected targets.
 
 If a selected target is absent, decide whether the requested scope means it should be newly installed or simply reported as absent. If the user asked to update every supported target, do not silently leave an older Vowline copy in an unselected location.
@@ -117,7 +118,7 @@ A valid update should confirm:
 ```text
 selected skill directories exist and match latest skills/vowline
 selected bridge files contain exactly one current Vowline marked block
-selected generated rule files match current guidance/ content where applicable
+selected generated rule files match the current rendered activation guidance where applicable
 unrelated user and project instructions were preserved
 ```
 
