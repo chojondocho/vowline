@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 - 2026-05-06
+
+- Compressed the canonical `vowline` skill body into a shorter operating contract centered on contract clarity, authority, evidence, output shape, computation, privacy, tool use, verification, and result-first completion.
+- Simplified `guidance/VOWLINE_ACTIVATION.md` to a direct bridge directive: `` Always use the skill `vowline` ``.
+- Hardened generated-rule verification to compare Cursor and Windsurf rule files against the rendered guidance instead of relying on a brittle display-name substring.
+- Preserved the skill's core boundaries for higher-priority instructions, explicit authorization before external side effects, conservative changes, and evidence-backed reporting.
+
 ## 0.4.0 - 2026-05-03
 
 - Consolidated host-specific bridge guidance into a single canonical activation source at `guidance/VOWLINE_ACTIVATION.md`; removed the seven legacy per-host guidance files.

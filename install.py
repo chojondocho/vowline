@@ -355,16 +355,18 @@ def verify_project(target: Path, harnesses: tuple[str, ...] = SUPPORTED_HARNESSE
         if text.count(MARKERS[0][0]) != 1 or text.count(MARKERS[0][1]) != 1:
             failures.append(f"expected exactly one Vowline block in {file_path}")
 
-    generated_files: list[Path] = []
+    generated_files: list[tuple[Path, str]] = []
     if "cursor" in harnesses:
-        generated_files.append(target / ".cursor" / "rules" / "vowline.mdc")
+        generated_files.append((target / ".cursor" / "rules" / "vowline.mdc", guidance("CURSOR.mdc")))
     if "windsurf" in harnesses:
-        generated_files.append(target / ".windsurf" / "rules" / "vowline.md")
+        generated_files.append((target / ".windsurf" / "rules" / "vowline.md", guidance("WINDSURF.md")))
 
-    for file_path in generated_files:
+    for file_path, expected in generated_files:
         text = read_text(file_path)
-        if "Vowline" not in text:
+        if not text:
             failures.append(f"missing generated guidance: {file_path}")
+        elif text.rstrip() != expected.rstrip():
+            failures.append(f"stale generated guidance: {file_path}")
 
     for base in project_skill_base_dirs(target, harnesses):
         for legacy in LEGACY_SKILLS:
