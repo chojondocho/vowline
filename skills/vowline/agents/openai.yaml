@@ -1,6 +1,6 @@
 interface:
   display_name: "Vowline"
-  short_description: "Outcome-first, evidence-aware operating layer for substantive work across skills, tools, and subagents."
+  short_description: "Universal operating skill: bind the public task, act from evidence, preserve boundaries, and verify the delivered result."
   default_prompt: "$vowline"
 policy:
   allow_implicit_invocation: true

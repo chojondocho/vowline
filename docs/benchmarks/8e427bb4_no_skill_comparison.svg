@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="vl-title vl-desc">
+  <title id="vl-title">Vowline 0.6.0 (hash 8e427bb4) versus no-skill — side-by-side pass rate per benchmark family</title>
+  <desc id="vl-desc">Grouped bar chart comparing no-skill and Vowline 0.6.0 (8e427bb4) on each benchmark family's no-skill failure slice. Each family has two bars at the same scale: no-skill (all gray, 0 percent pass by construction) and Vowline 0.6.0 (gold = recovered, light gray = still open). SkillsBench 0 of 3 versus 2 of 3 (66.7 percent recovered by Docker reward verifier). LiveCodeBench 0 of 2 versus 2 of 2 (100 percent recovered by pass at 1). Terminal-Bench 0 of 3 versus 2 of 3 (66.7 percent recovered by Docker pytest). IFEval 0 of 4 versus 2 of 4 (50 percent recovered by strict prompt evaluator). Overall 0 of 12 versus 8 of 12, 66.7 percent. Same gpt-5.5 agent at xhigh reasoning effort. No proxy judges, no LLM-as-judge.</desc>
+
+  <defs>
+    <style><![CDATA[
+      .bg { fill: #FFFFFF; }
+      .ink { fill: #0A0A0A; }
+      .ink-2 { fill: #525252; }
+      .ink-3 { fill: #A3A3A3; }
+      .ink-mute { fill: #999999; }
+      .grid { stroke: #EDEDED; stroke-width: 1; fill: none; }
+      .axis { stroke: #C9C9C9; stroke-width: 1; fill: none; }
+      .accent { fill: #B8801F; }
+      .accent-deep { fill: #8B6014; }
+      .failure { fill: #F3F3F3; }
+      .open { fill: #ECECEC; }
+
+      text { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; }
+      .t-title { font-size: 28px; font-weight: 700; letter-spacing: -0.022em; }
+      .t-sub { font-size: 14px; font-weight: 400; }
+      .t-tick { font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+      .t-bar-value { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+      .t-bar-zero { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+      .t-bar-sub { font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+      .t-family { font-size: 15px; font-weight: 600; letter-spacing: -0.005em; }
+      .t-frac { font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+      .t-chip { font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+      .t-legend { font-size: 12px; font-weight: 500; }
+      .t-foot { font-size: 11px; font-weight: 400; }
+    ]]></style>
+
+    <clipPath id="bar-shape-90">
+      <rect x="0" y="0" width="90" height="380" rx="4"/>
+    </clipPath>
+  </defs>
+
+  <rect class="bg" width="1400" height="720"/>
+
+  <!-- HEADER -->
+  <g transform="translate(56,64)">
+    <text class="t-title ink" y="22" xml:space="preserve">Vowline 0.6.0(<tspan class="mono accent-deep">8e427bb4</tspan>) vs No-Skill</text>
+    <text class="t-sub ink-2" y="54" xml:space="preserve">Vowline 0.6.0 recovers <tspan font-weight="700" fill="#0A0A0A">8 of 12</tspan> selected no-skill failures <tspan font-weight="700" class="accent-deep">(66.7%)</tspan> at <tspan class="mono" font-weight="600">gpt-5.5</tspan> <tspan class="mono" font-weight="600">xhigh</tspan>. Each pair compares no-skill (baseline:</text>
+    <text class="t-sub ink-2" y="76" xml:space="preserve">0% by construction — every task is a no-skill failure) with Vowline 0.6.0; every task scored by its family's official deterministic verifier — no proxy judges, no LLM-as-judge.</text>
+  </g>
+
+  <!-- LEGEND (top right, vertical stack) -->
+  <g transform="translate(1156,68)">
+    <rect class="failure" x="0" y="0" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="11">no-skill (all failed)</text>
+    <rect class="accent" x="0" y="22" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="33">recovered by Vowline 0.6.0</text>
+    <rect class="open" x="0" y="44" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="55">still open under Vowline 0.6.0</text>
+  </g>
+
+  <!-- Y-AXIS GRID + LABELS -->
+  <g>
+    <line class="grid" x1="84" y1="200" x2="1340" y2="200"/>
+    <line class="grid" x1="84" y1="295" x2="1340" y2="295"/>
+    <line class="grid" x1="84" y1="390" x2="1340" y2="390"/>
+    <line class="grid" x1="84" y1="485" x2="1340" y2="485"/>
+    <line class="axis" x1="84" y1="580" x2="1340" y2="580"/>
+
+    <text class="t-tick ink-3" x="76" y="204" text-anchor="end">100%</text>
+    <text class="t-tick ink-3" x="76" y="299" text-anchor="end">75%</text>
+    <text class="t-tick ink-3" x="76" y="394" text-anchor="end">50%</text>
+    <text class="t-tick ink-3" x="76" y="489" text-anchor="end">25%</text>
+    <text class="t-tick ink-3" x="76" y="584" text-anchor="end">0%</text>
+  </g>
+
+  <!-- GROUP 1: SkillsBench (no_skill 0% vs Vowline 66.7%) -->
+  <g transform="translate(0,0)">
+    <!-- no_skill bar (left) -->
+    <g transform="translate(100,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">0%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">no-skill</text>
+    </g>
+    <!-- Vowline bar (right) -->
+    <g transform="translate(204,200)">
+      <g clip-path="url(#bar-shape-90)">
+        <rect class="open" x="0" y="0" width="90" height="126.67"/>
+        <rect class="accent" x="0" y="126.67" width="90" height="253.33"/>
+      </g>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">66.7%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.6.0</text>
+    </g>
+    <!-- Group label below -->
+    <text class="t-family ink" x="197" y="625" text-anchor="middle">SkillsBench</text>
+    <text class="t-frac ink-2" x="197" y="644" text-anchor="middle">0 / 3  →  2 / 3 recovered</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="127" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="197" y="670" text-anchor="middle">Docker reward</text>
+  </g>
+
+  <!-- GROUP 2: LiveCodeBench (no_skill 0% vs Vowline 100%) -->
+  <g>
+    <g transform="translate(448,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">0%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">no-skill</text>
+    </g>
+    <g transform="translate(552,200)">
+      <rect class="accent" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.6.0</text>
+    </g>
+    <text class="t-family ink" x="545" y="625" text-anchor="middle">LiveCodeBench</text>
+    <text class="t-frac ink-2" x="545" y="644" text-anchor="middle">0 / 2  →  2 / 2 recovered</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="475" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="545" y="670" text-anchor="middle">pass@1</text>
+  </g>
+
+  <!-- GROUP 3: Terminal-Bench (no_skill 0% vs Vowline 66.7%) -->
+  <g>
+    <g transform="translate(796,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">0%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">no-skill</text>
+    </g>
+    <g transform="translate(900,200)">
+      <g clip-path="url(#bar-shape-90)">
+        <rect class="open" x="0" y="0" width="90" height="126.67"/>
+        <rect class="accent" x="0" y="126.67" width="90" height="253.33"/>
+      </g>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">66.7%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.6.0</text>
+    </g>
+    <text class="t-family ink" x="893" y="625" text-anchor="middle">Terminal-Bench</text>
+    <text class="t-frac ink-2" x="893" y="644" text-anchor="middle">0 / 3  →  2 / 3 recovered</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="823" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="893" y="670" text-anchor="middle">Docker / pytest</text>
+  </g>
+
+  <!-- GROUP 4: IFEval (no_skill 0% vs Vowline 50%) -->
+  <g>
+    <g transform="translate(1144,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">0%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">no-skill</text>
+    </g>
+    <g transform="translate(1248,200)">
+      <g clip-path="url(#bar-shape-90)">
+        <rect class="open" x="0" y="0" width="90" height="190"/>
+        <rect class="accent" x="0" y="190" width="90" height="190"/>
+      </g>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">50.0%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.6.0</text>
+    </g>
+    <text class="t-family ink" x="1241" y="625" text-anchor="middle">IFEval</text>
+    <text class="t-frac ink-2" x="1241" y="644" text-anchor="middle">0 / 4  →  2 / 4 recovered</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="1171" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="1241" y="670" text-anchor="middle">strict prompt</text>
+  </g>
+
+  <!-- FOOTER -->
+  <text class="t-foot ink-3" x="56" y="700" xml:space="preserve">Custom failure-only slice — not a global leaderboard. Open under 0.6.0: <tspan class="mono">manufacturing-codebook-normalization</tspan>, <tspan class="mono">git-multibranch</tspan>, IFEval keys <tspan class="mono">30</tspan> and <tspan class="mono">337</tspan>. Source: <tspan class="mono">compact_universal_audit.toml</tspan>  ·  2026-05-17.</text>
+</svg>

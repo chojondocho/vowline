@@ -8,11 +8,21 @@
   <img src="assets/vowline-banner.png" alt="Vowline brand banner: one luminous line moving through aligned agent nodes" width="100%">
 </p>
 
-**General operating skill for substantive AI agent work.**
+**Universal operating skill: bind the public task, act from evidence, preserve boundaries, and verify the delivered result.**
 
-Vowline is a portable `SKILL.md` package for Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other skill-compatible agent harnesses. It gives agents a cross-cutting operating layer for meaningful work across domains: infer intent, choose the right effort level, use evidence and tools deliberately, preserve constraints, act safely, verify, and report the result plainly.
+Vowline is a portable `SKILL.md` package for Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other skill-compatible agent harnesses. It gives agents the compact operating contract in `skills/vowline/SKILL.md`: bind the public task once, act from current public evidence, preserve explicit exceptions and reference-only values, avoid checker-specific behavior, edit the smallest live write set, and verify the delivered surface through the same interface a real user or official consumer will use.
 
-Use it when intent inference, safe action, evidence, verification, concise reporting, or completion criteria matter: coding, debugging, research, writing, artifacts, planning, review, decisions, visual work, prompt work, repository work, and handoffs. Vowline is designed to run alongside narrower active skills; those narrower skills keep their domain-specific procedures, while Vowline governs the shared operating discipline.
+Use it for substantive work with a real deliverable, constraints, evidence requirements, cleanup risk, data interpretation, artifact fidelity, repository scope, or completion criteria. Vowline never overrides higher-priority system, tool, safety, project, or explicit user instructions.
+
+## Preliminary benchmark
+
+<p align="center">
+  <img src="docs/benchmarks/8e427bb4_no_skill_comparison.svg" alt="Vowline 0.6.0(8e427bb4) recovers 8 of 12 selected no-skill failures at gpt-5.5 xhigh under each family's official deterministic verifier" width="100%">
+</p>
+
+A failure-only slice: 12 tasks where the same `gpt-5.5` agent at `xhigh` reasoning effort failed without any skill. Re-running with Vowline 0.6.0 recovers **8 / 12 (66.7%)** under each family's official deterministic verifier — `pass@1` for LiveCodeBench, Docker/pytest for Terminal-Bench, strict-prompt evaluator for IFEval, Docker reward for SkillsBench. No proxy judges, no LLM-as-judge. This is a best-so-far snapshot, not an all-pass claim; four tasks remain open. See [`8e427bb4_no_skill_comparison.md`](docs/benchmarks/8e427bb4_no_skill_comparison.md) for the per-task table and planned result artifact paths for each row.
+
+**This is not a benchmark-overfit skill.** The tested Vowline contract is a general operating discipline: public contract binding, current-evidence discipline, shared decision points, scoped live writes, structured tools, real verification, and explicit reporting. It forbids encoding hidden tests, private fixtures, benchmark quirks, known answers, one-off paths, checker tricks, hardcoded hidden outputs, or grader internals.
 
 ## Quick start
 
@@ -36,48 +46,108 @@ Update Vowline for yourself by following https://github.com/chojondocho/vowline/
 
 You do not need to clone this repository if your agent can read GitHub and write the relevant local files. Vowline is designed to be installed by agents as well as by humans.
 
-## What it changes
+## What Vowline changes
 
-Vowline does not add a rigid script. It changes the agent's default operating posture for work where judgment, evidence, tools, side effects, or completion criteria matter.
+Vowline does not add a rigid workflow. It changes the agent's default operating standard for work where incomplete evidence, unchecked artifacts, overbroad edits, hidden checker adaptation, malformed proof predicates, or vague completion claims would create failure.
 
-| Area | What changes |
+| Area | 0.6.0 operating requirement |
 | --- | --- |
-| Authority | Stays beneath higher-priority system, platform, safety, tool, project, runtime, and user instructions |
-| Skill coordination | Runs alongside narrower active skills, while preserving the shared discipline those skills usually do not cover |
-| Delegation | Propagates objective, constraints, authorization boundaries, evidence needs, validation, and reporting requirements to subagents |
-| Effort | Uses fast, standard, or deep mode instead of treating every request as the same size |
-| Intent | Optimizes for the user's real purpose, not only the visible wording |
-| Assumptions | Proceeds with the smallest safe assumption unless missing information materially changes the result or creates risk |
-| Evidence | Inspects referenced artifacts, retrieves support when needed, and separates evidence, inference, speculation, and absence of evidence |
-| Tool use | Selects real available tools when they matter, remaps unavailable planned tools, and preserves verification needs |
-| Change discipline | Makes the smallest sufficient change while preserving behavior, interfaces, facts, style, security, accessibility, and performance |
-| Authorization | Requires explicit approval before external, irreversible, credential-related, production, purchasing, publishing, messaging, commit, push, deployment, or data-mutating actions |
-| Verification | Checks the affected path by the cheapest reliable method and says exactly what could not be verified |
-| Reporting | Leads with the result and keeps evidence, assumptions, validation, risks, blockers, paths, commands, and citations exact |
-| Completion | Tracks every requested item and stops only when the deliverable is usable or a safe blocker is reached |
-| Task overlays | Adds domain guidance for coding, debugging, research, writing, artifacts, data, frontend, high-stakes advice, plans, prompts, and handoffs |
+| Public contract | Bind the target, inputs, output surface, allowed writes, exclusions, success threshold, time budget, and final-response shape once. |
+| Working ledger | Before editing, track the general rule, shared decision point, non-sample obligations, required facts, explicit exceptions, declaration sources, reference-only values, and proof predicates. |
+| Evidence | Treat current public evidence as the only proof. Intent, old passes, proxy judges, skipped checks, partial artifacts, and internal progress do not prove completion. |
+| Visible result | Finish the answer, artifact, command output, service state, report, or handoff. A private plan or partial internal state is not enough. |
+| Proof predicates | Make validation no stronger than the public contract. If a generic cleanup, closure, validation, or formatting rule conflicts with an explicit exception, adjust the predicate rather than deforming the artifact. |
+| Transferability | Optimize for general competence, not hidden tests, private fixtures, benchmark quirks, known answers, one-off paths, or checker tricks. |
+| Checker conflicts | If the visible task and a checker conflict, satisfy the visible task fairly, preserve evidence, and report the conflict. |
 
-In practice, it keeps agents focused on this operating shape:
+In practice, Vowline keeps agents focused on the same shape as the canonical `SKILL.md`:
 
 ```text
-Respect higher-priority instructions.
-Choose the lightest mode that can produce a correct result.
-Infer the real outcome, constraints, evidence needs, and stopping condition.
-Use available tools and retrieval when they materially improve the work, remapping unavailable tools without dropping the objective.
-Coordinate narrower skills and subagents without losing authorization boundaries.
-Make the smallest sufficient safe change or artifact.
-Verify by the cheapest reliable method that matches the task.
-Report result-first with evidence, validation, assumptions, risks, and blockers.
-Stop when the deliverable is usable or a safe blocker is reached.
+Respect higher-priority system, tool, safety, project, and explicit user instructions.
+Bind the public contract once.
+Inspect enough to understand the task.
+Create or repair a runnable public surface early.
+Prefer structured tools over ad hoc manipulation.
+Convert requirements into checkable invariants.
+Edit the smallest live write set.
+Preserve explicit exceptions and reference-only values.
+Verify the final artifact or runtime state itself.
+Report the changed surface and current proof, separating blockers and non-proof.
 ```
+
+## Work discipline
+
+Vowline asks the agent to inspect enough to understand the real task, then make the public surface runnable or usable early. A script, config, service, or artifact that has not been exercised is not considered done.
+
+It prefers structured tools over improvisation: official CLIs, parsers, runtimes, package entry points, databases, browsers, validators, renderers, VCS tools, and the consumer interfaces that will actually read the result.
+
+It turns requirements into invariants: exact names, casing, punctuation, wrappers, endings, ordering, counts, domains, references, windows, precision, exceptions, and boundary inclusions. When the user requests a literal replacement, the literal is inserted exactly, without extra quotes, escapes, wrappers, aliases, comments, or compatibility syntax unless the contract includes them.
+
+For public tests or workflows, Vowline favors the broadest relevant test, or a faithful parameterized variant, before adding narrow examples. When an example illustrates a general rule, the rule belongs at the shared decision point; equivalent token classes, literals, enums, sentinels, modes, markers, casing, separators, missing values, conversions, warnings, serializations, and round-trip consumers need to be traced from that point.
+
+Tolerance fixes belong at the grammar or protocol boundary. Casing, whitespace, aliases, encodings, locale, optional syntax, and case-insensitive protocol vocabulary should be normalized before later comparisons. If a grammar is case-insensitive, its command words, modes, data markers, and missing sentinels are treated as a symbolic class and compared only after canonicalization.
+
+Declarative state and runtime behavior are separate public surfaces. For config, service, build, deploy, and policy work, Vowline identifies the primary entry point plus included files, puts required declarations in the loaded canonical scope, and verifies both file text and effective state.
+
+Mappings, classifications, joins, spans, and extracted fields must be grounded in the authoritative source. Weak, ambiguous, suffix-only, or family-level support is downgraded to `UNKNOWN` or `null` when the contract allows that outcome.
+
+For source-derived reports, Vowline chooses the row universe before aggregating. If one source table feeds multiple requested metrics or views, it uses the inner entity set with authoritative support for every shared dimension and derived field. Fallback fields stay inside that set; unmatched, catch-all, subtotal, residual, or out-of-domain rows are not unioned merely to preserve a metric unless the contract explicitly requests outer or full coverage.
+
+For quantitative records, absent rows, blank cells, and unresolved participants remain separate from zeroes, losses, wins, ordinary rows, and shifted pairings. If missing data could change a scalar answer, its treatment must come from public instructions or be preserved as uncertainty.
+
+For audit, scan, lint, and report tasks, Vowline keeps the scanner's ordinary scope for the named artifact and respects task-local tool notes. A note that suppresses dev, test, optional, or other records confirms that those records are outside ordinary scope; it is not a reason to enable dev, all, transitive, experimental, live, or cross-database expansion unless the public contract asks for that expansion.
+
+Target-only identifiers are references, not entities. Graph, join, link, and foreign-key outputs create entity rows only from declared sources unless closure is requested. Terminal, sentinel, sink, exit, missing, and external-target labels can remain valid reference targets when the source or contract exempts them from declaration; they should not become blank records, nodes, rows, or reachability members merely to satisfy closure.
+
+Documents, spreadsheets, and visual artifacts must use native features when native features are requested. Tables, pivot tables, charts, formulas, comments, fields, layers, labels, legends, decorations, and hover or popover states need to be real native objects, not static look-alikes, and the reopened file or package should expose those parts.
+
+For algorithmic code, complexity comes from maximum constraints, not just samples. Samples should be accompanied by at least one boundary, adversarial, or brute-force check when feasible.
+
+If faithful proof is blocked by ordinary missing runtime dependencies, Vowline tries the project's standard local setup path once before substituting static or partial checks. If broad proof remains blocked, a substitute proof must preserve the broad input's token classes, branches, warnings, exceptions, and edge values; stubbed, shimmed, and partial-runtime checks are smoke-only unless they keep those non-sample obligations.
+
+Expensive search, scraping, rendering, training, fuzzing, history scans, and network work are bounded. Between reruns, Vowline records the failed axis, causal hypothesis, wording change, expected behavior, and stop or next criterion instead of rerunning unchanged wording.
+
+## Boundaries
+
+Vowline solves the public task, not the checker. It does not weaken tests, modify verifiers, shadow tools, intercept clients, or hardcode hidden outputs.
+
+It does not inspect hidden tests, solutions, private references, answer files, or grader internals. If those appear accidentally, they are ignored.
+
+For contest or code-generation tasks, Vowline does not look up editorials, accepted submissions, discussion threads, or problem-specific external solutions.
+
+For repository cleanup, Vowline changes only current working-tree files. It does not amend, reset, rebase, filter, prune, delete refs, or alter commits or history unless history, commits, refs, purge, or physical removal are explicitly in scope.
+
+It edits the smallest live write set. Broad nouns expand inspection and reporting; they do not authorize unrelated or evidence-only writes.
+
+## Cleanup discipline
+
+Cleanup fixes credential or control-plane exposure on active live surfaces. A file is active only if it controls source, config, script, environment, deployment, runtime, secret-store, or requested-output behavior.
+
+Protected residuals are not cleanup failures. After the active allowlist is clean, Vowline leaves matches in protected data, provenance, embedded diffs, logs, archives, or snapshots unchanged and reports them instead of chasing a zero-match scan.
+
+Value type is classified before editing. Tokens, private keys, passwords, and credential assignments are editable. Resource URLs, bucket names, ARNs, account IDs, hashes, IDs, examples, and provenance are not treated as secrets unless the contract says so.
+
+The edit allowlist is built from active source, config, script, environment, deployment, runtime, secret-store, and requested-output paths before replacement. Broad scans are diagnostic only; they do not add protected or unlisted files to the write set.
+
+Credential cleanup replaces only matched value spans on the allowlist while preserving syntax and wrappers. Absence checks are scoped to current allowlisted files; whole-repo, raw-byte, and history scans are audit-only and do not justify edits or rewrites. Protected, generated, evidence-only, or unlisted changed paths are restored before proof.
+
+## Proof and final reporting
+
+Vowline proves work through the same interface a real user, fresh client, official checker, parser, service, workflow, or consumer will use. It verifies the final artifact or state itself by reading it back, parsing it, inspecting native parts, recomputing derived values, validating domains, or querying the loaded runtime view as appropriate.
+
+Proof assertions come from the visible contract, including allowed exceptions. Vowline separates task failures from authentication, dependency, permission, Docker, timeout, network, runner, verifier, and infrastructure failures.
+
+After the first official or faithful fresh-client pass, Vowline stops while the public state remains in place. It does not claim all-pass, recovery, or improvement unless current deterministic evidence proves it.
+
+Final reporting is intentionally narrow: if complete, state the changed surface and current proof; if blocked, name the exact blocker and public evidence. Current proof stays separate from historical, skipped, invalid, blocked, proxy, or inferred evidence.
 
 ## Why agents need it
 
-Modern agents can already write, browse, edit, run tools, inspect files, call APIs, and delegate work. The failure point is often not raw capability; it is inconsistent operating discipline. An agent may ask when it should proceed, proceed when it should ask, assume a tool exists without checking, abandon verification when a preferred tool is unavailable, edit beyond the requested scope, delegate without constraints, or report effort instead of a usable result.
+Modern agents can already write, browse, edit, run tools, inspect files, call APIs, and produce artifacts. The recurring failure point is not only raw capability; it is loss of discipline at the boundary between task, evidence, edit scope, and proof.
 
-Vowline gives every agent a portable default for those failure points. It does not replace specialized skills; it makes them safer and more reliable by carrying the shared contract for intent, evidence, authorization, verification, completion, and result-first reporting. Any agent trusted with meaningful work should have Vowline installed before that work begins.
+Typical failures include treating a partial artifact as done, making a proof predicate stricter than the public contract, flattening missing data into zero, creating entity rows from reference-only identifiers, replacing a requested literal with a syntactic variant, passing a happy path while dropping non-sample obligations, changing repository history during cleanup, or reporting an old pass as current proof.
 
-A useful surprise is that this can make the same underlying model behave more agentically while spending fewer tokens. Clear operating defaults reduce avoidable clarification loops, redundant retrieval, over-planning, unfocused tool use, and verbose status reporting. The result is not just cleaner prose; it is more useful work per turn.
+Vowline gives agents a portable default for those failure points. It makes the agent bind the public task, preserve explicit exceptions, use authoritative sources, prefer real tools and real consumers, limit writes, and verify the delivered surface before declaring completion.
 
 ## Supported agents
 
@@ -152,10 +222,10 @@ The script default is `all`. Pass `--harnesses core` when you want only the main
 After installation, direct invocation is usually optional because host bridge files activate or route to Vowline where the host supports that pattern. Direct invocation is still useful when you want to force the skill for one request:
 
 ```text
-$vowline review this launch plan for weak assumptions
-/vowline rewrite this memo without losing the author's intent
-@vowline compare these implementation options and recommend one
-$vowline debug this failing test with the smallest safe change
+$vowline repair this CLI and verify it through the public command surface
+/vowline build this spreadsheet with real formulas and inspect the reopened workbook
+@vowline audit this repository for active credential exposure only
+$vowline produce this source-derived report without inventing unsupported rows
 ```
 
 Codex commonly uses `$vowline`, Claude Code commonly uses `/vowline`, and Windsurf commonly uses `@vowline`. Other hosts may surface skills or rules differently.
@@ -169,6 +239,7 @@ install.py                      Optional installer and verifier
 uninstall.py                    Optional uninstaller and verifier
 UPDATE.md                       Update guide for existing installs
 docs/COMPATIBILITY.md           Supported paths and host notes
+docs/benchmarks/                Benchmark summaries and charts
 tests/                          Installer, verifier, and uninstall coverage
 ```
 
@@ -183,12 +254,6 @@ When Vowline edits an existing instruction file, it uses a marked block and pres
 Repeated installs replace only that marked block. Generated rule files for Cursor and Windsurf use the same activation body with host-required front matter added by `install.py`. Manual installers can render the exact block or rule text with `python3 install.py render-guidance marked-block`, `python3 install.py render-guidance CURSOR.mdc`, or `python3 install.py render-guidance WINDSURF.md`.
 
 Existing installs update by repeating the relevant install command from the latest repository. See [UPDATE.md](UPDATE.md).
-
-## Boundaries
-
-Vowline does not override system messages, platform policies, safety rules, repository instructions, organization settings, or tool permissions. It also does not make every host invoke the skill automatically.
-
-Vowline does not grant permission to deploy, publish, purchase, message people, mutate production data, delete user data, rotate credentials, or take other externally visible or irreversible actions. It tells the agent to prepare the work and ask for explicit approval first.
 
 ## Development checks
 
@@ -227,7 +292,7 @@ Uninstall removes Vowline-owned skill directories and Vowline marked blocks. It 
 
 ## Name
 
-`Vowline` means a line of commitment: a small covenant tying the agent to the user's actual outcome. It is not legal trademark clearance.
+`Vowline` means a line of commitment: a small covenant tying the agent to the user's public outcome. It is not legal trademark clearance.
 
 ## License
 
