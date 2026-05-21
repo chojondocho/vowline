@@ -5,6 +5,7 @@
 - Reworked the canonical `vowline` skill into the new public-contract operating model: public task binding, a small working ledger, current-public-evidence proof, proof predicates scoped to the visible contract, transferable competence, smallest live write sets, cleanup allowlists, and final reporting that separates current proof from non-proof.
 - Updated the activation bridge body to require consistent Vowline use, including for sub-agents, while continuing to render all host bridge files from `guidance/VOWLINE_ACTIVATION.md`.
 - Refreshed README around the new `SKILL.md` contract, including the 0.6.0 operating requirements, proof and cleanup discipline, direct invocation examples, and the repository layout for benchmark documentation.
+- Removed AI-written README detail sections that incorrectly paraphrased the canonical contract, and replaced them with a direct link to `skills/vowline/SKILL.md` for the full details.
 - Added the preliminary 0.6.0 failure-only benchmark summary and chart under `docs/benchmarks/`, reporting the `8e427bb4` no-skill comparison as 8 recovered tasks out of 12 selected no-skill failures, with no proxy judges or LLM-as-judge claims.
 - Updated the OpenAI skill metadata short description to match the new canonical Vowline description.
 
