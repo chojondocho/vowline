@@ -51,4 +51,4 @@ how many did `final_vowline` recover with the same model setting
 - `no_skill` has 0 task passes by construction because every denominator row was selected from current no-skill failures.
 - Scoring is official or public deterministic: IFEval official evaluator, LiveCodeBench official pass@1 probe, Terminal-Bench Docker/pytest verifier, and SkillsBench Docker verifier/reward.
 - Proxy-judge rows and blocked infrastructure rows are excluded from this chart.
-- The Vowline 0.6.0 (`8e427bb4`) result is the best-so-far full-evidence baseline, not a solved final state. The currently open rows are `manufacturing-codebook-normalization`, `git-multibranch`, IFEval key `30`, and IFEval key `337`.
+- The Vowline 0.6.0 (`8e427bb4`) result is a historical full-evidence baseline, not a solved final state or the current README benchmark snapshot. The open rows for this historical slice were `manufacturing-codebook-normalization`, `git-multibranch`, IFEval key `30`, and IFEval key `337`.

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="vl-title vl-desc">
+  <title id="vl-title">Vowline 0.7.0 (hash 6057fa00) deterministic benchmark snapshot</title>
+  <desc id="vl-desc">Grouped bar chart showing exact same-hash Vowline 0.7.0 (6057fa00) checked deterministic benchmark tasks. Each family has two bars at the same scale: checked task denominator (all gray) and Vowline 0.7.0 (gold = passed, light gray = still open). SkillsBench 3 of 3 passed by Docker reward verifier. IFEval 5 of 5 passed by official strict prompt evaluator. LiveBench 2 of 2 passed by deterministic record scoring. Terminal-Bench 2 of 3 passed by public Docker verifier, with nginx-request-logging still open. Overall 12 of 13 checked benchmark tasks passed, 92.3 percent. Same gpt-5.5 agent at xhigh reasoning effort. No proxy judges, no LLM-as-judge, no mixed-hash rows.</desc>
+
+  <defs>
+    <style><![CDATA[
+      .bg { fill: #FFFFFF; }
+      .ink { fill: #0A0A0A; }
+      .ink-2 { fill: #525252; }
+      .ink-3 { fill: #A3A3A3; }
+      .ink-mute { fill: #999999; }
+      .grid { stroke: #EDEDED; stroke-width: 1; fill: none; }
+      .axis { stroke: #C9C9C9; stroke-width: 1; fill: none; }
+      .accent { fill: #B8801F; }
+      .accent-deep { fill: #8B6014; }
+      .failure { fill: #F3F3F3; }
+      .open { fill: #ECECEC; }
+
+      text { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; }
+      .t-title { font-size: 28px; font-weight: 700; letter-spacing: -0.022em; }
+      .t-sub { font-size: 14px; font-weight: 400; }
+      .t-tick { font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+      .t-bar-value { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+      .t-bar-zero { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+      .t-bar-sub { font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+      .t-family { font-size: 15px; font-weight: 600; letter-spacing: -0.005em; }
+      .t-frac { font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+      .t-chip { font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+      .t-legend { font-size: 12px; font-weight: 500; }
+      .t-foot { font-size: 11px; font-weight: 400; }
+    ]]></style>
+
+    <clipPath id="bar-shape-90">
+      <rect x="0" y="0" width="90" height="380" rx="4"/>
+    </clipPath>
+  </defs>
+
+  <rect class="bg" width="1400" height="720"/>
+
+  <!-- HEADER -->
+  <g transform="translate(56,64)">
+    <text class="t-title ink" y="22" xml:space="preserve">Vowline 0.7.0(<tspan class="mono accent-deep">6057fa00</tspan>) Benchmark Snapshot</text>
+    <text class="t-sub ink-2" y="54" xml:space="preserve">Exact same-hash Vowline 0.7.0 passes <tspan font-weight="700" fill="#0A0A0A">12 of 13</tspan> checked deterministic benchmark tasks <tspan font-weight="700" class="accent-deep">(92.3%)</tspan> at <tspan class="mono" font-weight="600">gpt-5.5</tspan> <tspan class="mono" font-weight="600">xhigh</tspan>.</text>
+    <text class="t-sub ink-2" y="76" xml:space="preserve">Each pair compares the checked task denominator with Vowline 0.7.0 pass/open results; every task scored by a public deterministic verifier — no proxy judges, no LLM-as-judge, no mixed-hash rows.</text>
+  </g>
+
+  <!-- LEGEND (top right, vertical stack) -->
+  <g transform="translate(1156,68)">
+    <rect class="failure" x="0" y="0" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="11">checked denominator</text>
+    <rect class="accent" x="0" y="22" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="33">passed by Vowline 0.7.0</text>
+    <rect class="open" x="0" y="44" width="14" height="14" rx="3"/>
+    <text class="t-legend ink-2" x="22" y="55">still open under Vowline 0.7.0</text>
+  </g>
+
+  <!-- Y-AXIS GRID + LABELS -->
+  <g>
+    <line class="grid" x1="84" y1="200" x2="1340" y2="200"/>
+    <line class="grid" x1="84" y1="295" x2="1340" y2="295"/>
+    <line class="grid" x1="84" y1="390" x2="1340" y2="390"/>
+    <line class="grid" x1="84" y1="485" x2="1340" y2="485"/>
+    <line class="axis" x1="84" y1="580" x2="1340" y2="580"/>
+
+    <text class="t-tick ink-3" x="76" y="204" text-anchor="end">100%</text>
+    <text class="t-tick ink-3" x="76" y="299" text-anchor="end">75%</text>
+    <text class="t-tick ink-3" x="76" y="394" text-anchor="end">50%</text>
+    <text class="t-tick ink-3" x="76" y="489" text-anchor="end">25%</text>
+    <text class="t-tick ink-3" x="76" y="584" text-anchor="end">0%</text>
+  </g>
+
+  <!-- GROUP 1: SkillsBench (checked denominator 100% vs Vowline 100%) -->
+  <g transform="translate(0,0)">
+    <!-- checked denominator bar (left) -->
+    <g transform="translate(150,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">checked</text>
+    </g>
+    <!-- Vowline bar (right) -->
+    <g transform="translate(254,200)">
+      <rect class="accent" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.7.0</text>
+    </g>
+    <!-- Group label below -->
+    <text class="t-family ink" x="247" y="625" text-anchor="middle">SkillsBench</text>
+    <text class="t-frac ink-2" x="247" y="644" text-anchor="middle">3 checked  →  3 passed</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="177" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="247" y="670" text-anchor="middle">Docker reward</text>
+  </g>
+
+  <!-- GROUP 2: IFEval (checked denominator 100% vs Vowline 100%) -->
+  <g>
+    <g transform="translate(442,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">checked</text>
+    </g>
+    <g transform="translate(546,200)">
+      <rect class="accent" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.7.0</text>
+    </g>
+    <text class="t-family ink" x="539" y="625" text-anchor="middle">IFEval</text>
+    <text class="t-frac ink-2" x="539" y="644" text-anchor="middle">5 checked  →  5 passed</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="469" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="539" y="670" text-anchor="middle">official strict</text>
+  </g>
+
+  <!-- GROUP 3: LiveBench (checked denominator 100% vs Vowline 100%) -->
+  <g>
+    <g transform="translate(734,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">checked</text>
+    </g>
+    <g transform="translate(838,200)">
+      <rect class="accent" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.7.0</text>
+    </g>
+    <text class="t-family ink" x="831" y="625" text-anchor="middle">LiveBench</text>
+    <text class="t-frac ink-2" x="831" y="644" text-anchor="middle">2 checked  →  2 passed</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="761" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="831" y="670" text-anchor="middle">record score</text>
+  </g>
+
+  <!-- GROUP 4: Terminal-Bench (checked denominator 100% vs Vowline 66.7%) -->
+  <g>
+    <g transform="translate(1026,200)">
+      <rect class="failure" x="0" y="0" width="90" height="380" rx="4"/>
+      <text class="t-bar-zero ink-mute" x="45" y="-10" text-anchor="middle">100%</text>
+      <text class="t-bar-sub ink-3" x="45" y="395" text-anchor="middle">checked</text>
+    </g>
+    <g transform="translate(1130,200)">
+      <g clip-path="url(#bar-shape-90)">
+        <rect class="open" x="0" y="0" width="90" height="126.67"/>
+        <rect class="accent" x="0" y="126.67" width="90" height="253.33"/>
+      </g>
+      <text class="t-bar-value ink" x="45" y="-10" text-anchor="middle">66.7%</text>
+      <text class="t-bar-sub accent-deep" x="45" y="395" text-anchor="middle">Vowline 0.7.0</text>
+    </g>
+    <text class="t-family ink" x="1123" y="625" text-anchor="middle">Terminal-Bench</text>
+    <text class="t-frac ink-2" x="1123" y="644" text-anchor="middle">3 checked  →  2 passed, 1 open</text>
+    <rect fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" x="1053" y="656" width="140" height="20" rx="4"/>
+    <text class="t-chip mono ink-2" x="1123" y="670" text-anchor="middle">Docker verifier</text>
+  </g>
+
+  <!-- FOOTER -->
+  <text class="t-foot ink-3" x="56" y="700" xml:space="preserve">Exact same-hash deterministic benchmark snapshot — not a global leaderboard. Open under <tspan class="mono">6057fa00</tspan>: <tspan class="mono">nginx-request-logging</tspan>. Source: completed <tspan class="mono">result.json</tspan>, <tspan class="mono">summary.json</tspan>, and LiveBench <tspan class="mono">records.json</tspan> rows  ·  2026-05-26.</text>
+</svg>

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 - 2026-05-26
+
+- Updated the canonical `skills/vowline/SKILL.md` to the benchmark-selected `6057fa00a6c074fe2af5f28b0a11062e69e154acf6296d4c65eb8b63f1cd637c` contract: future-client binding, exact final-surface predicates, public-label preservation, source-backed entity and metric universes, native structured tools, scoped cleanup paths, and bounded faithful proof.
+- Refreshed README around the 0.7.0 contract so the public summary points at the current canonical skill rather than the historical 0.6.0 operating table.
+- Added a current 0.7.0 deterministic benchmark summary and chart under `docs/benchmarks/`, reporting the exact same-hash `6057fa00` run set as 12 / 13 checked benchmark tasks passed across SkillsBench, IFEval, LiveBench, and Terminal-Bench, with `nginx-request-logging` still open.
+- Reclassified the prior `8e427bb4` benchmark page as a historical 0.6.0 baseline instead of the current best-so-far claim.
+
 ## 0.6.0 - 2026-05-17
 
 - Reworked the canonical `vowline` skill into the new public-contract operating model: public task binding, a small working ledger, current-public-evidence proof, proof predicates scoped to the visible contract, transferable competence, smallest live write sets, cleanup allowlists, and final reporting that separates current proof from non-proof.

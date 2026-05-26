@@ -10,19 +10,19 @@
 
 **Universal operating skill: bind the public task, act from evidence, preserve boundaries, and verify the delivered result.**
 
-Vowline is a portable `SKILL.md` package for Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other skill-compatible agent harnesses. It gives agents the compact operating contract in `skills/vowline/SKILL.md`: bind the public task once, act from current public evidence, preserve explicit exceptions and reference-only values, avoid checker-specific behavior, edit the smallest live write set, and verify the delivered surface through the same interface a real user or official consumer will use.
+Vowline is a portable `SKILL.md` package for Codex, Claude Code, Windsurf, Cursor, Gemini CLI, GitHub Copilot, and other skill-compatible agent harnesses. It gives agents the compact operating contract in `skills/vowline/SKILL.md`: bind the target and future client once, convert visible requirements into predicates over the final surface, preserve public labels and source-backed entity boundaries, prefer native structured tools, edit only the smallest live write set, and verify the delivered surface through the same interface a real user or official consumer will use.
 
 Use it for substantive work with a real deliverable, constraints, evidence requirements, cleanup risk, data interpretation, artifact fidelity, repository scope, or completion criteria. Vowline never overrides higher-priority system, tool, safety, project, or explicit user instructions.
 
-## Preliminary benchmark
+## Current benchmark snapshot
 
 <p align="center">
-  <img src="docs/benchmarks/8e427bb4_no_skill_comparison.svg" alt="Vowline 0.6.0(8e427bb4) recovers 8 of 12 selected no-skill failures at gpt-5.5 xhigh under each family's official deterministic verifier" width="100%">
+  <img src="docs/benchmarks/6057fa00_benchmark_snapshot.svg" alt="Vowline 0.7.0(6057fa00) passes 12 of 13 checked deterministic benchmark tasks at gpt-5.5 xhigh" width="100%">
 </p>
 
-A failure-only slice: 12 tasks where the same `gpt-5.5` agent at `xhigh` reasoning effort failed without any skill. Re-running with Vowline 0.6.0 recovers **8 / 12 (66.7%)** under each family's official deterministic verifier — `pass@1` for LiveCodeBench, Docker/pytest for Terminal-Bench, strict-prompt evaluator for IFEval, Docker reward for SkillsBench. No proxy judges, no LLM-as-judge. This is a best-so-far snapshot, not an all-pass claim; four tasks remain open. See [`8e427bb4_no_skill_comparison.md`](docs/benchmarks/8e427bb4_no_skill_comparison.md) for the per-task table and planned result artifact paths for each row.
+A deterministic benchmark snapshot for the exact Vowline 0.7.0 skill body (`6057fa00a6c074fe2af5f28b0a11062e69e154acf6296d4c65eb8b63f1cd637c`) passes **12 / 13 checked tasks (92.3%)** at `gpt-5.5` with `xhigh` reasoning effort. The completed public/verifier-backed rows span SkillsBench, IFEval, LiveBench, and Terminal-Bench; `nginx-request-logging` is the only open task. This is mostly single-run deterministic verifier evidence, not a `pass@2` score or repeated-stability claim. No proxy judges, no LLM-as-judge, no mixed-hash rows, and no all-pass claim. See [`6057fa00_benchmark_snapshot.md`](docs/benchmarks/6057fa00_benchmark_snapshot.md) for the exact rows and result artifact paths. The earlier 0.6.0 failure-only comparison remains archived at [`8e427bb4_no_skill_comparison.md`](docs/benchmarks/8e427bb4_no_skill_comparison.md).
 
-**This is not a benchmark-overfit skill.** The tested Vowline contract is a general operating discipline: public contract binding, current-evidence discipline, shared decision points, scoped live writes, structured tools, real verification, and explicit reporting. It forbids encoding hidden tests, private fixtures, benchmark quirks, known answers, one-off paths, checker tricks, hardcoded hidden outputs, or grader internals.
+**This is not a benchmark-overfit skill.** The tested Vowline contract is a general operating discipline: target and future-client binding, final-surface predicates, public-label preservation, declared-source entity boundaries, scoped live writes, native structured tools, faithful consumer proof, and explicit reporting. It forbids encoding unavailable private facts, hidden tests, private fixtures, benchmark quirks, known answers, one-off paths, measurement tricks, hardcoded outputs, or verifier workarounds.
 
 ## Quick start
 
@@ -50,28 +50,28 @@ You do not need to clone this repository if your agent can read GitHub and write
 
 Vowline does not add a rigid workflow. It changes the agent's default operating standard for work where incomplete evidence, unchecked artifacts, overbroad edits, hidden checker adaptation, malformed proof predicates, or vague completion claims would create failure.
 
-| Area | 0.6.0 operating requirement |
+| Area | 0.7.0 operating requirement |
 | --- | --- |
-| Public contract | Bind the target, inputs, output surface, allowed writes, exclusions, success threshold, time budget, and final-response shape once. |
-| Working ledger | Before editing, track the general rule, shared decision point, non-sample obligations, required facts, explicit exceptions, declaration sources, reference-only values, and proof predicates. |
-| Evidence | Treat current public evidence as the only proof. Intent, old passes, proxy judges, skipped checks, partial artifacts, and internal progress do not prove completion. |
-| Visible result | Finish the answer, artifact, command output, service state, report, or handoff. A private plan or partial internal state is not enough. |
-| Proof predicates | Make validation no stronger than the public contract. If a generic cleanup, closure, validation, or formatting rule conflicts with an explicit exception, adjust the predicate rather than deforming the artifact. |
-| Transferability | Optimize for general competence, not hidden tests, private fixtures, benchmark quirks, known answers, one-off paths, or checker tricks. |
-| Checker conflicts | If the visible task and a checker conflict, satisfy the visible task fairly, preserve evidence, and report the conflict. |
+| Public contract | Bind the target, future client, invocation surface, inputs, output surface, allowed writes, exclusions, success threshold, budget, and final-response shape once. |
+| Working ledger | Track facts, sources, exceptions, references, unknowns, decisions, and proof predicates while separating declarations from references, examples from defaults, owner surfaces from fragments, and absence from zero. |
+| Final-surface predicates | Convert requirements into checks over required and forbidden bytes, names, literals, case, wrappers, starts, endings, order, counts, domains, precision, persistence, and side effects. |
+| Public labels | Preserve distinctive public modifiers and nouns when labels become internal or visible names; avoid generic carriers, synonyms, and private relabeling. |
+| Source authority | Build entity rows, mappings, joins, aggregations, metrics, and native artifacts from declared sources and consumer-visible contracts instead of weak compatibility or sample-only support. |
+| Tooling and proof | Prefer native structured tools and prove the final artifact or state through the same verifier, parser, renderer, workflow, service, or consumer that will use it. |
+| Transferability | Optimize for general competence, not unavailable private facts, known answers, one-off paths, measurement tricks, or verifier workarounds. |
 
 In practice, Vowline keeps agents focused on the same shape as the canonical `SKILL.md`:
 
 ```text
 Respect higher-priority system, tool, safety, project, and explicit user instructions.
-Bind the public contract once.
-Inspect enough to understand the task.
-Create or repair a runnable public surface early.
-Prefer structured tools over ad hoc manipulation.
-Convert requirements into checkable invariants.
+Bind the target, future client, invocation surface, and final surface once.
+Inspect enough public structure to understand the task.
+Create the first complete runnable artifact early.
+Prefer native structured tools over ad hoc manipulation.
+Convert requirements into final-surface predicates.
 Edit the smallest live write set.
-Preserve explicit exceptions and reference-only values.
-Verify the final artifact or runtime state itself.
+Preserve public labels, entity boundaries, missing values, and reference-only targets.
+Verify the final artifact or runtime state through the real consumer.
 Report the changed surface and current proof, separating blockers and non-proof.
 ```
 
@@ -79,9 +79,9 @@ Report the changed surface and current proof, separating blockers and non-proof.
 
 Modern agents can already write, browse, edit, run tools, inspect files, call APIs, and produce artifacts. The recurring failure point is not only raw capability; it is loss of discipline at the boundary between task, evidence, edit scope, and proof.
 
-Typical failures include treating a partial artifact as done, making a proof predicate stricter than the public contract, flattening missing data into zero, creating entity rows from reference-only identifiers, replacing a requested literal with a syntactic variant, passing a happy path while dropping non-sample obligations, changing repository history during cleanup, or reporting an old pass as current proof.
+Typical failures include treating partial artifacts as done, pre-seeding names or payloads a future client must create, expanding broad nouns into unrequested members, flattening missing data into zero, creating records from relation-only targets, accepting weak source matches, replacing a requested literal with a syntactic variant, proving an alternate artifact instead of the final surface, mutating history during cleanup, or reporting an old pass as current proof.
 
-Vowline gives agents a portable default for those failure points. It makes the agent bind the public task, preserve explicit exceptions, use authoritative sources, prefer real tools and real consumers, limit writes, and verify the delivered surface before declaring completion.
+Vowline gives agents a portable default for those failure points. It makes the agent bind the target, future client, invocation surface, and final surface; keep facts, sources, exceptions, unknowns, decisions, and proof predicates separate; preserve public labels and declared entity boundaries; prefer native structured tools and real consumers; limit writes to the smallest live surface; and verify the delivered surface before declaring completion.
 
 For the full details, see the canonical [`SKILL.md`](skills/vowline/SKILL.md).
 
